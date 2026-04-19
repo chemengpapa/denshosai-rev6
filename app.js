@@ -584,13 +584,16 @@ function renderApp() {
   if (route.path === '/library') {
     active = 'library';
     content = renderLibraryView();
-  } else if (route.segments[0] === 'book' && route.segments[1] && route.segments.length === 2) {
-    active = 'library';
-    content = renderBookDetail(getBookById(route.segments[1]));
   } else if (route.path === '/book/new') {
     active = 'library';
     content = renderBookForm(null);
   } else if (route.segments[0] === 'book' && route.segments[1] === 'edit' && route.segments[2]) {
+    active = 'library';
+    content = renderBookForm(getBookById(route.segments[2]));
+  } else if (route.segments[0] === 'book' && route.segments[1] && route.segments.length === 2) {
+    active = 'library';
+    content = renderBookDetail(getBookById(route.segments[1]));
+  } else if (route.path === '/notes') {
     active = 'library';
     content = renderBookForm(getBookById(route.segments[2]));
   } else if (route.path === '/notes') {
